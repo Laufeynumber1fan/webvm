@@ -1,7 +1,7 @@
 // The root filesystem location
-export const diskImageUrl = "wss://disks.webvm.io/debian_large_20230522_5044875331.ext2";
+export const diskImageUrl = "/disk-images/bash";
 // The root filesystem backend type
-export const diskImageType = "cloud";
+export const diskImageType = "bytes";
 // Print an introduction message about the technology
 export const printIntro = true;
 // Is a graphical display needed
