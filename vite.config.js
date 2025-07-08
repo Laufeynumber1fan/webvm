@@ -18,6 +18,8 @@ export default defineConfig({
 			targets: [
 				{ src: 'tower.ico', dest: '' },
 				{ src: 'scrollbar.css', dest: '' },
+				{ src: 'banner.txt', dest: '' },
+				{ src: 'hidesidebar.css', dest: '' },
 				{ src: 'serviceWorker.js', dest: '' },
 				{ src: 'login.html', dest: '' },
 				{ src: 'assets/', dest: '' },
