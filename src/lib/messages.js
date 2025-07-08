@@ -1,8 +1,7 @@
 const color= "\x1b[1;35m";
 const underline= "\x1b[94;4m";
 const normal= "\x1b[0m";
-	export const introMessage = [
-	"000000000000000OOOxooxOOO000000000000000",
+	export const introMessage = ["000000000000000OOOxooxOOO000000000000000",
 	"000000000000OOkl,.....;..'lO000KK00KK0KK",
 	"00000000000Ok:.  .....,,. .'x000000KK0KK   ██╗      █████╗ ██╗   ██╗███████╗███████╗██╗   ██╗███████╗ █████╗ ███╗   ██╗",
 	"oO00000000Oo.      ...;;.  .'x00KKKKKKKK   ██║     ██╔══██╗██║   ██║██╔════╝██╔════╝╚██╗ ██╔╝██╔════╝██╔══██╗████╗  ██║",
@@ -19,11 +18,11 @@ const normal= "\x1b[0m";
 	"00OOl.   ;o:lkooddolk00dclddc;.  ..oKKKX       ╚══╝╚══╝ ╚══════╝╚═════╝   ╚═══╝  ╚═╝     ╚═╝",
 	"00Ok:.   ,c,dxdkxdodOKK0000dcx.   .o0XXX",
 	"00Ok,.   ':;ddoxxlox0K0O000lxo    .xKKKX    Powered by Leaningtech's WebVM (Thank you!)",
-	"OOOk..   .:;xoloc:clxk0kOOkoOc    ,0KXXX    " + underline + "https://github.com/leaningtech/webvm" + normal,
+	"OOOk..   .:;xoloc:clxk0kOOkoOc    ,0KXXX    https://github.com/leaningtech/webvm",
 	"0OOx.    .,:klcc:ccoxOOOkkcxd.   .xKXXXX",
 	"OOkd.    .;lxd;:,'':loxxxcdOd.  .l0KKXKX    This WebVM contains educational bash exercises as part of personal project.",
 	"OOOx.     .:dko,;;;cldxd:dOOd    cd0KKKX    Refer to my mdbook(s) for exercises:",
-	"0OOx. ..   'cxOo;cldxkxlxxd:     ...;okX    " + underline + "https://laufeynumber1fan.github.io/linuxliteracy/" + normal,
+	"0OOx. ..   'cxOo;cldxkxlxxd:     ...;okX    https://laufeynumber1fan.github.io/linuxliteracy/",
 	"OOx'...    .,lkOl':odookko'    ....  ,k0",
 	"Od. ..      .cdOk. .:oxkd.        ...okO",
 	"k.  ..      .;dOO,  cxOOo         ..;dkO",
