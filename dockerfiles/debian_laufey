@@ -10,9 +10,9 @@ RUN apt-get -y install apt-utils gcc \
 # To get Kali packages
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
-RUN apt-get -y install tcpdump tshark gpg tee
+RUN apt-get -y install tcpdump tshark gpg
 # From Book of Zeek
-RUN echo 'deb https://download.opensuse.org/repositories/security:/zeek/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/security:zeek.list
+RUN echo 'deb https://download.opensuse.org/repositories/security:/zeek/xUbuntu_22.04/ /' >> /etc/apt/sources.list
 RUN curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_22.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
 RUN apt-get -y install zeek-7.0
 RUN export PATH=/opt/zeek/bin:$PATH
