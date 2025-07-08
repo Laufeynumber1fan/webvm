@@ -1,12 +1,22 @@
 FROM --platform=i386 i386/debian:buster
 ARG DEBIAN_FRONTEND=noninteractive
+# From kali's /etc/apt/sources.list
+RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
+" >> sources.list
+# From Book of Zeek
+RUN echo 'deb https://download.opensuse.org/repositories/security:/zeek/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/security:zeek.list
+RUN curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
 RUN apt-get clean && apt-get update && apt-get -y upgrade
 RUN apt-get -y install apt-utils gcc \
 	python3 vim unzip  \
 	fakeroot dbus base hexedit \
 	patch wamerican ucf manpages \
 	file make dialog curl lolcat \
-	less cowsay netcat-openbsd
+	less cowsay netcat-openbsd \
+    locate nano tshark tcpdump \
+RUN apt install zeek-7.0
+RUN export PATH=/opt/zeek/bin:$PATH
+#
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
 COPY --chown=user:user ./banner.txt /home/user/banner.txt
@@ -16,4 +26,4 @@ WORKDIR /home/user/
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-CMD [ "/bin/bash" ]
+CMD /bin/bash | cat banner.txt
