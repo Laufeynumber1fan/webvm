@@ -1,17 +1,16 @@
 FROM --platform=i386 i386/debian:buster
 ARG DEBIAN_FRONTEND=noninteractive
-# To get Kali packages
-COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
-RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
-RUN apt install -f usrmerge
-RUN apt --fix-broken install && apt-get clean && apt-get update && apt-get -y upgrade
+RUN apt-get clean && apt-get update && apt-get -y upgrade
 RUN apt-get -y install apt-utils gcc \
 	python3 vim unzip \
 	fakeroot dbus base \
 	patch wamerican ucf manpages \
 	file make dialog curl \
-	less cowsay netcat-openbsd \
-    tshark tcpdump
+	less cowsay netcat-openbsd 
+# To get Kali packages
+COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
+RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
+RUN apt install tcpdump tshark
 # From Book of Zeek
 RUN echo 'deb https://download.opensuse.org/repositories/security:/zeek/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/security:zeek.list
 RUN curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_22.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
