@@ -1,10 +1,8 @@
 FROM --platform=i386 i386/debian:buster
 ARG DEBIAN_FRONTEND=noninteractive
-# From kali's /etc/apt/sources.list
-RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware" >> /etc/apt/sources.list
 RUN apt-get clean && apt-get update && apt-get -y upgrade
 RUN apt-get -y install apt-utils gcc \
-	python3 vim unzip  \
+	python3 vim unzip wget \
 	fakeroot dbus base hexedit \
 	patch wamerican ucf manpages \
 	file make dialog curl lolcat \
