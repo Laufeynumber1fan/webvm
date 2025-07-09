@@ -13,8 +13,7 @@ RUN apt-get -y install \
 	file \
 	curl \
 	less \
-	netcat-openbsd \
-	jp2a 
+	netcat-openbsd 
 # To get Kali packages
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
@@ -24,11 +23,11 @@ RUN apt-get -y install \
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
 COPY --chown=user:user ./banner.txt /home/user/banner.txt
-COPY --chown=user:user ./laufey.jpg /home/user/laufey.jpg
+COPY --chown=user:user ./laufey.png /home/user/laufey.png
 RUN chmod -R +x  /home/user/examples/lua
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
 WORKDIR /home/user/
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-CMD ["/bin/bash", "-c", "jp2a laufey.jpg; exec /bin/bash"]
+CMD ["/bin/bash", "-c", "cat laufey.png; exec /bin/bash"]
