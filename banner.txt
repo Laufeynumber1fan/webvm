@@ -1,34 +1,33 @@
-000000000000000OOOxooxOOO000000000000000 
-000000000000OOkl,.....;..'lO000KK00KK0KK
-00000000000Ok:.  .....,,. .'x000000KK0KK   ██╗      █████╗ ██╗   ██╗███████╗███████╗██╗   ██╗███████╗ █████╗ ███╗   ██╗
-oO00000000Oo.      ...;;.  .'x00KKKKKKKK   ██║     ██╔══██╗██║   ██║██╔════╝██╔════╝╚██╗ ██╔╝██╔════╝██╔══██╗████╗  ██║
-000000000O:       ....::..  .;d0000KKKKK   ██║     ███████║██║   ██║█████╗  █████╗   ╚████╔╝ █████╗  ███████║██╔██╗ ██║
-0000000Ok,       .',;cl:. ....,x00KKKKKK   ██║     ██╔══██║██║   ██║██╔══╝  ██╔══╝    ╚██╔╝  ██╔══╝  ██╔══██║██║╚██╗██║
-0000000k'        'lxOOOkl. '...,x00KKKKK   ███████╗██║  ██║╚██████╔╝██║     ███████╗   ██║   ██║     ██║  ██║██║ ╚████║
-000000O;       .,lxOOO000o..,...,O0KKKKK   ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝
-000000x.      .;ldxkOO0KK0l......c0KKKKK   
-00000O:      ':lodxkOO0000x,......OKKKKK       ██╗    ██╗███████╗██████╗ ██╗   ██╗███╗   ███╗
-00000O.   ...,:codxkkO0000kc......oKKKKX       ██║    ██║██╔════╝██╔══██╗██║   ██║████╗ ████║
-000OOd    'c',,,,;cdkkOOOOOo'....':KKKKK       ██║ █╗ ██║█████╗  ██████╔╝██║   ██║██╔████╔██║
-000OO:   .:o'. ..,cldkOxlcll'  ...,0KXXX       ██║███╗██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║╚██╔╝██║
-000Ok.   ,lo,c;,:olcdOOo,.;.'.. ..'xKXKX       ╚███╔███╔╝███████╗██████╔╝ ╚████╔╝ ██║ ╚═╝ ██║
-00OOl.   ;o:lkooddolk00dclddc;.  ..oKKKX       ╚══╝╚══╝ ╚══════╝╚═════╝   ╚═══╝  ╚═╝     ╚═╝
-00Ok:.   ,c,dxdkxdodOKK0000dcx.   .o0XXX
-00Ok,.   ':;ddoxxlox0K0O000lxo    .xKKKX    Powered by Leaningtech's WebVM (Thank you!)
-OOOk..   .:;xoloc:clxk0kOOkoOc    ,0KXXX    https://github.com/leaningtech/webvm
-0OOx.    .,:klcc:ccoxOOOkkcxd.   .xKXXXX
-OOkd.    .;lxd;:,'':loxxxcdOd.  .l0KKXKX    This WebVM contains educational bash exercises as part of personal project.
-OOOx.     .:dko,;;;cldxd:dOOd    cd0KKKX    Refer to my mdbook(s) for exercises:
-0OOx. ..   'cxOo;cldxkxlxxd:     ...;okX    https://laufeynumber1fan.github.io/linuxliteracy/
-OOx'...    .,lkOl':odookko'    ....  ,k0
-Od. ..      .cdOk. .:oxkd.        ...okO
-k.  ..      .;dOO,  cxOOo         ..;dkO
-c            :xO0x  lkO0o         ..;xkO
-. .          ;xO00; cxxkk,     ...  'xk0
- ','.        .lk000.oxcoXx,         .xk0
-.;;,.        .cxO0KllxkOOl.         ,xO0
-,;,           :dk0KxdO0000k         cxk0
-;:.           ;oxO0Olk00000:       .oxkO
-;:,           'cdO00lxOO000O.     .:okOO
-::::.         .:okO0ldkOO000d     .cdkOO
-Loading bash...
+
+  ██╗      █████╗ ██╗   ██╗███████╗███████╗██╗   ██╗███████╗ █████╗ ███╗   ██╗
+  ██║     ██╔══██╗██║   ██║██╔════╝██╔════╝╚██╗ ██╔╝██╔════╝██╔══██╗████╗  ██║
+  ██║     ███████║██║   ██║█████╗  █████╗   ╚████╔╝ █████╗  ███████║██╔██╗ ██║
+  ██║     ██╔══██║██║   ██║██╔══╝  ██╔══╝    ╚██╔╝  ██╔══╝  ██╔══██║██║╚██╗██║
+  ███████╗██║  ██║╚██████╔╝██║     ███████╗   ██║   ██║     ██║  ██║██║ ╚████║
+  ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝
+  
+      ██╗    ██╗███████╗██████╗ ██╗   ██╗███╗   ███╗
+      ██║    ██║██╔════╝██╔══██╗██║   ██║████╗ ████║
+      ██║ █╗ ██║█████╗  ██████╔╝██║   ██║██╔████╔██║
+      ██║███╗██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║╚██╔╝██║
+      ╚███╔███╔╝███████╗██████╔╝ ╚████╔╝ ██║ ╚═╝ ██║
+      ╚══╝╚══╝ ╚══════╝╚═════╝   ╚═══╝  ╚═╝     ╚═╝
+
+   Powered by Leaningtech's WebVM (Thank you!)
+   https://github.com/leaningtech/webvm
+
+   This WebVM contains educational bash exercises as part of personal project.
+   Refer to my mdbook(s) for exercises:
+   CLICK ME --> https://laufeynumber1fan.github.io/linuxliteracy/ <--- CLICK ME
+
+   Are you on mobile? This website works on mobile (in limited functionality.)
+
+
+
+
+
+
+
+
+ 
+

@@ -3,7 +3,7 @@ export const diskImageUrl = IMAGE_URL;
 // The root filesystem backend type
 export const diskImageType = "github";
 // Print an introduction message about the technology
-export const printIntro = true; //edit this in src/lib/messages.js
+export const printIntro = false; //edit this in src/lib/messages.js
 // Is a graphical display needed
 export const needsDisplay = false;
 // Executable full path (Required)
