@@ -30,9 +30,9 @@ COPY --chown=user:user ./laufey.png /home/user/laufey.png
 # Serve a new quote after every new shell. Awk is used to subsitute every "\\" as a newline to have multi-line quotes.
 # The quote is added at the end of banner.txt
 COPY ./quotes.txt /home/user/quotes.txt
-RUN sort -R /home/user/quotes.txt | head -n1 | awk 'ARGIND==1 { print } ARGIND==2 { gsub(/\\\\/, "\n"); print }' /home/user/banner.txt -
+RUN sort -R /home/user/quotes.txt | head -n1 | awk 'ARGIND==1 { print } ARGIND==2 { gsub(/\\\\/, "\n"); print }' /home/user/banner.txt - > /tmp/banner.txt
 RUN rm /home/user/quotes.txt
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-CMD ["/bin/bash", "-c", "cat banner.txt; exec /bin/bash"]
+CMD ["/bin/bash", "-c", "cat /tmp/banner.txt; exec /bin/bash"]
