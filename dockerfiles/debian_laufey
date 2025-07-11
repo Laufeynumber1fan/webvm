@@ -29,7 +29,7 @@ WORKDIR /home/user/
 # Serve a new quote after every new shell. Awk is used to subsitute every "\\" as a newline to have multi-line quotes.
 # The quote is added at the end of banner.txt
 COPY --chown=user:user ./quotes.txt /home/user/quotes.txt
-COPY --chown=user:user ./banner.txt /home/user/intro.txt
+COPY --chown=user:user ./intro.txt /home/user/intro.txt
 RUN sort -R /home/user/quotes.txt | head -n1 | awk 'ARGIND==1 { print } ARGIND==2 { gsub(/\\\\/, "\n"); print }' /home/user/intro.txt - > /home/user/banner
 RUN rm /home/user/quotes.txt /home/user/intro.txt
 RUN chmod 666 /home/user/banner
