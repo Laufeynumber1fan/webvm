@@ -27,6 +27,7 @@ RUN	DEBIAN_FRONTEND=noninteractive apt-get -y install \
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
 WORKDIR /home/user/
+COPY COPY --chown=user:user ./laufey /home/user/laufey
 # Serve a new quote after every new shell. Awk is used to subsitute every "\\" as a newline to have multi-line quotes.
 # The quote is added at the end of banner.txt
 COPY --chown=user:user ./quotes.txt /home/user/quotes.txt
@@ -36,4 +37,4 @@ RUN rm /home/user/quotes.txt /home/user/intro.txt
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-CMD ["/bin/bash", "-c", "cat banner; exec /bin/bash"]
+CMD ["/bin/bash"]
