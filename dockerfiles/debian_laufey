@@ -13,6 +13,7 @@ RUN apt-get -y install \
 	file \
 	curl \
 	less \
+	nano \
 	netcat-openbsd 
 # To get Kali packages
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
@@ -30,7 +31,7 @@ WORKDIR /home/user/
 # The quote is added at the end of banner.txt
 COPY --chown=user:user ./quotes.txt /home/user/quotes.txt
 COPY --chown=user:user ./intro.txt /home/user/intro.txt
-RUN sort -R /home/user/quotes.txt | head -n1 | awk 'ARGIND==1 { print } ARGIND==2 { gsub(/\\\\/, "\n"); print }' /home/user/intro.txt - > /home/user/banner
+RUN sort -R /home/user/quotes.txt | head -n1 | awk '"intro.txt"==ARGV[1] { print } "-"==ARGV[2] { gsub(/(\\\\)/, "\n   "); print }' /home/user/intro.txt - > /home/user/banner
 # RUN rm /home/user/quotes.txt /home/user/intro.txt
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
