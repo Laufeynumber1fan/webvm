@@ -1,5 +1,5 @@
    
    Ask not what your AI can do for you.\\Ask what you can do for your AI.
-   Think of how stupid the average person is.\\And realize half of them are stupider than that.
+   Think of how stupid the average person is\\and realize half of them are stupider than that.
    The journey of a thousand miles begins with a 1 day TryHackMe streak.
-   Often times you will do things not because they are easy.\\But because they looked easy at the time.
+   Often times you will do things not because they are easy,\\but because they looked easy at the time.
