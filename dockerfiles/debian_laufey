@@ -35,11 +35,11 @@ RUN apt-get install -y \
 	flex \
 	wget \
 	xz-utils
-COPY --chown=user:user ./include/wireshark-3.2.0 /tmp/wireshark-3.2.0/
-WORKDIR /tmp/wireshark-3.2.0/
-RUN cmake .
-RUN make install
-ENV PATH="/usr/lib/tshark/bin:$PATH"
+# COPY --chown=user:user ./include/wireshark-3.2.0 /tmp/wireshark-3.2.0/
+# WORKDIR /tmp/wireshark-3.2.0/
+# RUN cmake .
+# RUN make install
+# ENV PATH="/usr/lib/tshark/bin:$PATH"
 
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
