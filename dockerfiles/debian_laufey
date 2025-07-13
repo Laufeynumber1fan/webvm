@@ -36,6 +36,7 @@ COPY --chown=user:user ./include/pcaps /home/user/pcaps
 # The quote is added at the end of banner.txt
 COPY ./include/quotes.txt /tmp/quotes.txt
 COPY ./include/intro.txt /tmp/intro.txt
+COPY ./include/.bashrc /home/user/.bashrc
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
