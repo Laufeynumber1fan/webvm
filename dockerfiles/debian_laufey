@@ -26,7 +26,7 @@ RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-f
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	tcpdump
 
-# Build tshark from source specifically for debian buster (refer line 1).
+# Build tshark from source specifically for debian buster in 2019 (refer line 1).
 # Avoid having the full plugins and dependencies as theres something
 # conflicting with WebVM.
 RUN apt-get install -y \
@@ -38,9 +38,9 @@ RUN apt-get install -y \
 	wget \
 	xz-utils
 WORKDIR /src
-RUN wget https://www.wireshark.org/download/src/all-versions/wireshark-3.2.0.tar.xz -O /tmp/wireshark && \
-    tar -xf wireshark-3.2.0.tar.xz
+RUN wget https://www.wireshark.org/download/src/all-versions/wireshark-3.2.0.tar.xz -O /tmp/wireshark
 WORKDIR /tmp/wireshark
+RUN tar -xf wireshark-3.2.0.tar.xz
 RUN cmake .
 RUN make install
 ENV PATH="/usr/lib/tshark/bin:$PATH"
