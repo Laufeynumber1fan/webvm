@@ -21,7 +21,7 @@ RUN apt-get -y install \
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
-	tcpdump \
+	tcpdump
 
 # Build tshark from source specifically for debian buster in 2019 (refer line 1).
 # Avoid having the full plugins and dependencies as theres something
