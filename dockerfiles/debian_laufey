@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM --platform=linux/amd64 debian:bullseye-slim
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get clean && apt-get update && apt-get -y upgrade
 RUN apt-get -y install \
@@ -22,24 +22,19 @@ COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	tcpdump \
-	tshark
 
 # Build tshark from source specifically for debian buster in 2019 (refer line 1).
 # Avoid having the full plugins and dependencies as theres something
 # conflicting with WebVM.
 RUN apt-get install -y \
-    build-essential \
-	cmake \
-	libpcap-dev \
-	bison \
-	flex \
+    libwireshark14>=3.3.30 \
+	libwiretap11>=3.3.2 \
+	libwsutil12>=3.3.0 \
+	wireshark-common=3.4.16-0+deb11u1 \
 	wget \
 	xz-utils
-# COPY --chown=user:user ./include/wireshark-3.2.0 /tmp/wireshark-3.2.0/
-# WORKDIR /tmp/wireshark-3.2.0/
-# RUN cmake .
-# RUN make install
-# ENV PATH="/usr/lib/tshark/bin:$PATH"
+RUN wget 'http://security.debian.org/debian-security/pool/updates/main/w/wireshark/tshark_3.4.16-0+deb11u1_amd64.deb' -O /tmp/tshark-3-4-16
+RUN dpkg -i /tmp/tshark-3-4-16
 
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.

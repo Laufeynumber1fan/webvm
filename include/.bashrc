@@ -118,4 +118,4 @@ alias zeek='echo "Due to memory and VM constraints, Zeek is not installed. Sorry
 alias man='echo "This may take a few seconds..." | man '
 
 # Print banner
-sort -R /tmp/quotes.txt | head -n1 | awk '"intro.txt"==ARGV[1] { print } "-"==ARGV[2] { gsub(/(\\\\)/, "\n   "); print $0+"\n"}' /tmp/intro.txt -
+sort -R /tmp/quotes.txt | head -n1 | awk '"intro.txt"==ARGV[1] { print } "-"==ARGV[2] { gsub(/(\\\\)/, "\n   "); print $0} END { print "" }' /tmp/intro.txt -
