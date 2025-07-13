@@ -18,22 +18,14 @@ RUN apt-get -y install \
 	curl \
 	less \
 	nano \
-	netcat-openbsd \
-	gpg 
-# Get zeek
-RUN sed -i s/deb https://download.opensuse.org/repositories/security:/zeek/xUbuntu_22.04/ /etc/apt/sources.list
-RUN curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
-RUN apt-get update && apt-get install \
-	zeek-7.0
-# To get Kali packages
+	netcat-openbsd
+RUN	DEBIAN_FRONTEND=noninteractive apt-get -y install \
+	tshark
+# tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN apt-get -y install \
 	tcpdump
-# Get tshark while avoiding the user prompt
-RUN echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections
-RUN	DEBIAN_FRONTEND=noninteractive apt-get -y install \
-	wireshark
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
 WORKDIR /home/user/
@@ -42,12 +34,9 @@ COPY --chown=user:user ./include/laufey /home/user/laufey
 COPY --chown=user:user ./include/pcaps /home/user/pcaps
 # Serve a new quote after every new shell. Awk is used to subsitute every "\\" as a newline to have multi-line quotes.
 # The quote is added at the end of banner.txt
-COPY --chown=user:user ./include/quotes.txt /home/user/quotes.txt
-COPY --chown=user:user ./include/intro.txt /home/user/intro.txt
-# Startup script
-COPY --chown=user:user ./include/start.sh /home/user/start.sh
-RUN chmod 777 /home/user/start.sh
+COPY ./include/quotes.txt /tmp/quotes.txt
+COPY ./include/intro.txt /tmp/intro.txt
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-CMD ["/bin/bash", "-c", "./start.sh 2> /dev/null ; exec /bin/bash"]
+CMD ["/bin/bash"]
