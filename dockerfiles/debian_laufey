@@ -24,8 +24,32 @@ RUN apt-get -y install \
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
-	tcpdump \
-	tshark
+	tcpdump
+
+# build tshark from source specifically for debian buster (refer line 1)
+RUN apt-get install -y \
+    build-essential \
+	cmake \
+	libpcap-dev \
+	bison \
+	flex \
+	wget \
+	xz-utils
+WORKDIR /src
+RUN wget https://www.wireshark.org/download/src/wireshark-3.2.0.tar.xz && \
+    tar -xf wireshark-3.2.0.tar.xz
+WORKDIR /src/wireshark-3.2.0
+RUN cmake . \
+    -DENABLE_GUI=OFF \
+    -DBUILD_wireshark=OFF \
+    -DBUILD_tshark=ON \
+    -DENABLE_LUA=OFF \
+    -DENABLE_SNMP=OFF \
+    -DENABLE_CAP=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr/lib/tshark
+RUN make -j$(nproc) && make install
+ENV PATH="/usr/lib/tshark/bin:$PATH"
+
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
 WORKDIR /home/user/
