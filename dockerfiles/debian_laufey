@@ -38,12 +38,12 @@ RUN apt-get install -y \
 	wget \
 	xz-utils
 WORKDIR /src
-RUN wget https://www.wireshark.org/download/src/all-versions/wireshark-3.2.0.tar.xz -O /tmp/wireshark-3.2.0.tar.xz
+RUN wget https://www.wireshark.org/download/src/all-versions/wireshark-3.2.0.tar.xz -O /usr/wireshark-3.2.0.tar.xz
 RUN tar -xf /tmp/wireshark-3.2.0.tar.xz
 WORKDIR /tmp/wireshark-3.2.0/
-RUN cmake .
-RUN make install
-ENV PATH="/usr/lib/tshark/bin:$PATH"
+# RUN cmake .
+# RUN make install
+# ENV PATH="/usr/lib/tshark/bin:$PATH"
 
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
