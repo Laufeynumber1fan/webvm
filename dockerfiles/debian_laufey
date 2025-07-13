@@ -41,15 +41,8 @@ WORKDIR /src
 RUN wget https://www.wireshark.org/download/src/all-versions/wireshark-3.2.0.tar.xz && \
     tar -xf wireshark-3.2.0.tar.xz
 WORKDIR /src/wireshark-3.2.0
-RUN cmake . \
-    -DENABLE_GUI=OFF \
-    -DBUILD_wireshark=OFF \
-    -DBUILD_tshark=ON \
-    -DENABLE_LUA=OFF \
-    -DENABLE_SNMP=OFF \
-    -DENABLE_CAP=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr/lib/tshark
-RUN make -j$(nproc) && make install
+RUN cmake .
+RUN make install
 ENV PATH="/usr/lib/tshark/bin:$PATH"
 
 RUN useradd -m user && echo "user:password" | chpasswd
