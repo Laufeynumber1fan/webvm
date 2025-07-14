@@ -26,7 +26,7 @@ COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	tcpdump \
-	tshark=2.6.20-0+deb10u4:i386  
+	tshark=2.6.20-0+deb10u4
 
 RUN useradd -m user && echo "user:password" | chpasswd
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
