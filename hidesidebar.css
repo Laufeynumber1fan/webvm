@@ -1,3 +1,7 @@
 .flex-row {
     display: none !important;
 }
+
+html {
+    background-image: url('Manitoba_Escarpment.jpg') !important;
+}
