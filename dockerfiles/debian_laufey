@@ -30,7 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # My attempt to get tshark to work in a webVM
 # There is a dependency in tshark that strictly requires a network interface even during -r and -nN
 # By puring as much dependencies as possible, tshark in webVM should work without hanging.
-RUN apt-get purge -y \
+RUN apt-get remove -y \
 	libpcap-dev \
 	libwiretap8 
 RUN chmod -x /usr/bin/dumpcap
