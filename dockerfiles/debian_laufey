@@ -38,6 +38,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	qttools5-dev \
 	cmake
 
+# My attempt to get tsh	ark to work in a webVM
+# There is a dependency in tshark that strictly requires a network interface even during -r and -nN
+# By purging as much dependencies as possible, tshark in webVM should work without hanging.
 COPY ./include/wireshark-old /home/user/wireshark-old
 WORKDIR /home/user/wireshark-old
 RUN cmake .
@@ -49,10 +52,7 @@ COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	tcpdump 
-# My attempt to get tsh	ark to work in a webVM
-# There is a dependency in tshark that strictly requires a network interface even during -r and -nN
-# By purging as much dependencies as possible, tshark in webVM should work without hanging.
-RUN chmod 777 /usr/bin/dumpcap
+
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
 WORKDIR /home/user/
 
