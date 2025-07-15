@@ -18,7 +18,7 @@ RUN apt-get -y install \
 	curl \
 	less \
 	nano \
-	locate \
+	ifconfig \
 	netcat-openbsd
 RUN useradd -m user && echo "user:password" | chpasswd
 # tcpdump from Kali
@@ -27,7 +27,7 @@ RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-f
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	tcpdump \
 	tshark
-# My attempt to get tshark to work in a webVM
+# My attempt to get tsh	ark to work in a webVM
 # There is a dependency in tshark that strictly requires a network interface even during -r and -nN
 # By puring as much dependencies as possible, tshark in webVM should work without hanging.
 RUN chmod -x /usr/bin/dumpcap

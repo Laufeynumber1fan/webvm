@@ -114,8 +114,9 @@ fi
 
 alias tcpdump='tcpdump -n'
 alias tshark='tshark -n'
+alias grep='grep --color'
 alias zeek='echo "Due to memory and VM constraints, Zeek is not installed. Sorry!"'
-alias man='echo "This may take a few seconds..." | man '
+alias locate='echo "Due to memory and VM constraints, locate is not installed. Sorry!'
 
 # Print banner
 sort -R /tmp/quotes.txt | head -n1 | awk '"intro.txt"==ARGV[1] { print } "-"==ARGV[2] { gsub(/(\\\\)/, "\n   "); print $0} END { print "" }' /tmp/intro.txt -

@@ -115,10 +115,13 @@ jobs:
       # Build the i386 Dockerfile image.
       - run: docker build . --tag $TAG --file ${{ github.event.inputs.DOCKERFILE_PATH }} --platform=i386
       
+      # Give a network interface to allow tshark to work
+      - run: docker network create --driver=bridge --subnet=192.168.0.0/24 --ip-range=192.168.0.0/24 --gateway=192.168.0.254 eth0
+
       # Run the docker image so that we can export the container.
       # Run the Docker container with the Google Public DNS nameservers: 8.8.8.8, 8.8.4.4
       - run: |
-          docker run --dns 8.8.8.8 --dns 8.8.4.4 -d $TAG
+          docker run --dns 8.8.8.8 --dns 8.8.4.4 -d $TAG --network=eth0
           echo "CONTAINER_ID=$(sudo docker ps -aq)" >> $GITHUB_ENV
 
       # We extract the CMD, we first need to figure whether the Dockerfile uses CMD or an Entrypoint.
