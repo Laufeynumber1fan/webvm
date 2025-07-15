@@ -43,9 +43,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # By purging as much dependencies as possible, tshark in webVM should work without hanging.
 COPY ./include/wireshark-old /home/user/wireshark-old
 WORKDIR /home/user/wireshark-old
-RUN cmake .
-RUN make
-RUN make install 
+cmake -S . -B build -D BUILD_tshark=ON -D BUILD_wireshark=OFF
+RUN make tshark
+RUN make install
+# Very important as the wireshark binaries are 1GB+
+RUN rm -rf /home/user/wireshark-old
 
 # tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
