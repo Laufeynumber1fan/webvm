@@ -22,7 +22,6 @@ RUN apt-get -y install \
 	netcat-openbsd
 RUN useradd -m user && echo "user:password" | chpasswd
 # tcpdump from Kali
-# 
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
 RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' >> /etc/apt/sources.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
