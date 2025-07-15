@@ -1,0 +1,36 @@
+{
+	"BUILD_DIR" : "/home/kali/wireshark-old/wireshark-old/ui/qt/qtui_autogen",
+	"CMAKE_BINARY_DIR" : "/home/kali/wireshark-old/wireshark-old",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/kali/wireshark-old/wireshark-old/ui/qt",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/kali/wireshark-old/wireshark-old/ui/qt",
+	"CMAKE_SOURCE_DIR" : "/home/kali/wireshark-old/wireshark-old",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/home/kali/wireshark-old/wireshark-old/ui/qt/qtui_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/kali/wireshark-old/wireshark-old/image/layout_2.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_6.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_1.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_5.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_4@2x.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_5@2x.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_6@2x.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_2@2x.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_3@2x.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_4.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_1@2x.png",
+		"/home/kali/wireshark-old/wireshark-old/image/layout_3.png"
+	],
+	"LOCK_FILE" : "/home/kali/wireshark-old/wireshark-old/ui/qt/CMakeFiles/qtui_autogen.dir/AutoRcc_layout_EF4ICWSDIF_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--format-version", "1", "-name", "layout" ],
+	"OUTPUT_CHECKSUM" : "EF4ICWSDIF",
+	"OUTPUT_NAME" : "qrc_layout.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/kali/wireshark-old/wireshark-old/ui/qt/CMakeFiles/qtui_autogen.dir/AutoRcc_layout_EF4ICWSDIF_Used.txt",
+	"SOURCE" : "/home/kali/wireshark-old/wireshark-old/image/layout.qrc",
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}
