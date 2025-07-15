@@ -21,6 +21,7 @@ export default defineConfig({
 				{ src: 'banner.txt', dest: '' },
 				{ src: 'customlaufey.css', dest: '' },
 				{ src: 'Virden_Manitoba.jpg', dest: '' },
+				{ src: 'Beuningen_Gelderland.jpg', dest: '' },
 				{ src: 'serviceWorker.js', dest: '' },
 				{ src: 'login.html', dest: '' },
 				{ src: 'assets/', dest: '' },

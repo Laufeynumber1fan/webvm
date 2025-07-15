@@ -14,3 +14,10 @@
     left: 1em !important;
     right: 0.3em !important;
 }
+
+/* Mobile only */
+@media (pointer:coarse) { 
+    .xterm-viewport {
+        background-image: url("Beuningen_Gelderland.jpg") !important;
+    }
+}
