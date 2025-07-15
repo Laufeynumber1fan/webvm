@@ -1,0 +1,16 @@
+.flex-row {
+    display: none !important;
+}
+
+.xterm-viewport {
+    background-image: url("Virden_Manitoba.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.3;
+}
+
+/* Override svelete */
+#console {
+    left: 1em !important;
+    right: 0.3em !important;
+}

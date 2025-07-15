@@ -16,11 +16,11 @@ export default defineConfig({
 		sveltekit(),
 		viteStaticCopy({
 			targets: [
-				{ src: 'tower.ico', dest: '' },
+				{ src: 'iceland.ico', dest: '' },
 				{ src: 'scrollbar.css', dest: '' },
 				{ src: 'banner.txt', dest: '' },
-				{ src: 'hidesidebar.css', dest: '' },
-				{ src: 'Manitoba_Escarpment.jpg', dest: '' },
+				{ src: 'customlaufey.css', dest: '' },
+				{ src: 'Virden_Manitoba.jpg', dest: '' },
 				{ src: 'serviceWorker.js', dest: '' },
 				{ src: 'login.html', dest: '' },
 				{ src: 'assets/', dest: '' },
