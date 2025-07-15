@@ -2,7 +2,7 @@ const color= "\x1b[1;35m";
 const underline= "\x1b[94;4m";
 const normal= "\x1b[0m";
 export const introMessage = [
-	"Loading bash. This takes a few seconds.",
+	"Loading bash, this takes a few seconds...",
 	""
 ];
 export const errorMessage = [

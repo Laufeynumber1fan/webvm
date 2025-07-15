@@ -30,7 +30,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # My attempt to get tshark to work in a webVM
 # There is a dependency in tshark that strictly requires a network interface even during -r and -nN
 # By puring as much dependencies as possible, tshark in webVM should work without hanging.
-RUN yes | dpkg --remove --force-all libwiretap8 
 RUN chmod -x /usr/bin/dumpcap
 RUN chmod 777 /usr/bin/tshark
 # We set WORKDIR, as this gets extracted by Webvm to be used as the cwd. This is optional.
