@@ -43,7 +43,21 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # By purging as much dependencies as possible, tshark in webVM should work without hanging.
 COPY ./include/wireshark-old /home/user/wireshark-old
 WORKDIR /home/user/wireshark-old
-RUN cmake -S . -DBUILD_wireshark=OFF
+RUN cmake -S . \
+	-DBUILD_wireshark=OFF \
+	-DBUILD_dumpcap=OFF \
+	-DBUILD_sshdump=OFF \
+	-DBUILD_tfshark=OFF \
+	-DBUILD_rawshark=OFF \
+	-DBUILD_fuzzshark=OFF \
+	-DBUILD_text2pcap=OFF \
+	-DBUILD_mergecap=OFF \
+	-DBUILD_reordercap=OFF \
+	-DBUILD_captype=OFF \
+	-DBUILD_editcap=OFF \
+	-DBUILD_reordercap=OFF \
+	-DBUILD_dcerpcidl2wrs=OFF 
+	
 RUN make tshark
 RUN make install
 # Very important as the wireshark binaries are 1GB+
