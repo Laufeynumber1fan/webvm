@@ -56,7 +56,8 @@ RUN cmake -S . \
 	-DBUILD_captype=OFF \
 	-DBUILD_editcap=OFF \
 	-DBUILD_reordercap=OFF \
-	-DBUILD_dcerpcidl2wrs=OFF 
+	-DBUILD_dcerpcidl2wrs=OFF \
+	-DBUILD_tshark=ON
 	
 RUN make tshark
 RUN make install
