@@ -36,6 +36,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 RUN chmod 777 /usr/bin/tshark
+RUN patchelf --replace-needed libwireshark.so.12 /usr/lib/i386-linux-gnu/libwireshark.so.11 /usr/bin/tshark
+RUN patchelf --replace-needed libwiretap.so.9 /usr/lib/i386-linux-gnu/libwiretap.so.8 /usr/bin/tshark
+RUN patchelf --replace-needed libwsutil.so.10 /usr/lib/i386-linux-gnu/libwsutil.so.9 /usr/bin/tshark
 
 # tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
