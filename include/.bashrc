@@ -112,8 +112,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export LD_LIBRARY_PATH=/usr/lib/i386-linux-gnu:$LD_LIBRARY_PATH
-
 alias tcpdump='tcpdump -n'
 alias tshark='tshark -n'
 alias grep='grep --color'
