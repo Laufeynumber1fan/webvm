@@ -30,7 +30,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	libgcrypt20-dev \
   	libpcap-dev \
 	libssh-dev \
-	libsystemd-dev
+	libsystemd-dev \
+	libwireshark-dev
 
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 RUN chmod 777 /usr/bin/tshark
