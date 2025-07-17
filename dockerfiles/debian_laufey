@@ -22,6 +22,9 @@ RUN apt-get -y install \
 	netcat-openbsd
 RUN useradd -m user && echo "user:password" | chpasswd
 
+# My attempt to get tshark to work in a webVM
+# There is a dependency in tshark that strictly requires a network interface even during -r and -nN
+# By purging as much dependencies as possible, tshark in webVM should work without hanging.
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	build-essential \
 	libglib2.0-dev \
@@ -35,34 +38,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	libsystemd-dev \
 	qtmultimedia5-dev \
 	libqt5svg5-dev \
-	qttools5-dev \
-	cmake
+	qttools5-dev 
 
-# My attempt to get tsh	ark to work in a webVM
-# There is a dependency in tshark that strictly requires a network interface even during -r and -nN
-# By purging as much dependencies as possible, tshark in webVM should work without hanging.
-COPY ./include/wireshark-old /home/user/wireshark-old
-WORKDIR /home/user/wireshark-old
-RUN cmake -S . \
-	-DBUILD_wireshark=OFF \
-	-DBUILD_dumpcap=OFF \
-	-DBUILD_sshdump=OFF \
-	-DBUILD_tfshark=OFF \
-	-DBUILD_rawshark=OFF \
-	-DBUILD_fuzzshark=OFF \
-	-DBUILD_text2pcap=OFF \
-	-DBUILD_mergecap=OFF \
-	-DBUILD_reordercap=OFF \
-	-DBUILD_captype=OFF \
-	-DBUILD_editcap=OFF \
-	-DBUILD_reordercap=OFF \
-	-DBUILD_dcerpcidl2wrs=OFF \
-	-DBUILD_tshark=ON
-	
-RUN make tshark
-RUN make install
-# Very important as the wireshark binaries are 1GB+
-RUN rm -rf /home/user/wireshark-old
+COPY --chown=user:user ./include/tshark /usr/bin/tshark
 
 # tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
