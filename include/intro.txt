@@ -16,7 +16,7 @@
    Powered by Leaningtech's WebVM (Thank you!)
    https://github.com/leaningtech/webvm
 
-   This WebVM contains educational bash exercises as part of personal project.
+   This WebVM contains educational bash exercises as part of a personal project.
    Refer to my mdbook(s) for exercises:
    CLICK ME --> https://laufeynumber1fan.github.io/linuxliteracy/ <--- CLICK ME
 
