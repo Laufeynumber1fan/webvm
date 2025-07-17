@@ -19,7 +19,8 @@ RUN apt-get -y install \
 	curl \
 	less \
 	nano \
-	netcat-openbsd
+	netcat-openbsd \
+	patchelf
 RUN useradd -m user && echo "user:password" | chpasswd
 
 # My attempt to get tshark to work in a webVM
@@ -33,12 +34,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	libsystemd-dev \
 	libwireshark11
 
+RUN patchelf --remove-needed libwireshark.so.12
+RUN patchelf --remove-needed libwiretap.so.9
+RUN patchelf --remove-needed libwsutil.so.10
+RUN patchelf --add-needed /usr/lib/i386-linux-gnu/libwireshark.so.12
+RUN patchelf --add-needed /usr/lib/i386-linux-gnu/libwiretap.so.9
+RUN patchelf --add-needed /usr/lib/i386-linux-gnu/libwsutil.so.9
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 RUN chmod 777 /usr/bin/tshark
-# Add path of apt installed shared libraries to copied tshark executable
-RUN echo "/usr/lib/i386-linux-gnu" >> /etc/ld.so.conf
-# Reload
-RUN ldconfig
 
 # tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
