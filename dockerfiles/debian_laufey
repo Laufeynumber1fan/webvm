@@ -29,12 +29,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 	libglib2.0-dev \
 	libgcrypt20-dev \
   	libpcap-dev \
-	qtbase5-dev \
 	libssh-dev \
-	libsystemd-dev \
-	qtmultimedia5-dev \
-	libqt5svg5-dev \
-	qttools5-dev 
+	libsystemd-dev
 
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 
