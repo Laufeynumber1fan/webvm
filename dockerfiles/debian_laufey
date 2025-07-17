@@ -35,6 +35,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 RUN chmod 777 /usr/bin/tshark
+# Add path of apt installed shared libraries to copied tshark executable
+RUN echo "/usr/lib/i386-linux-gnu" >> /etc/ld.so.conf
+# Reload
+RUN ldconfig
 
 # tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
