@@ -36,7 +36,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 RUN chmod 777 /usr/bin/tshark
-RUN patchelf --set-rpath /usr/lib/i386-linux-gnu/ /usr/bin/tshark
+COPY --chown=user:user ./include/libwiretap.so.9 /usr/lib/i386-linux-gnu/libwiretap.so.9
+COPY --chown=user:user ./include/libwsutil.so.10 /usr/lib/i386-linux-gnu/libwsutil.so.10
+RUN ln -sf /usr/lib/i386-linux-gnu/libwireshark.so.12 /usr/lib/i386-linux-gnu/libwireshark.so.11
+# refresh linkers to apply rpath changes
+RUN ldconfig
 
 # tcpdump from Kali
 COPY --chown=user:user ./kali-keyring.gpg /etc/apt/trusted.gpg.d
