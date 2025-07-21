@@ -2,6 +2,7 @@ FROM --platform=i386 debian:buster
 RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
 RUN sed -i s/security.debian.org/archive.debian.org/g /etc/apt/sources.list
 RUN sed -i s/stretch-updates/stretch/g /etc/apt/sources.list
+RUN echo "deb http://archive.debian.org/debian bullseye main" >> /etc/apt/sources.list
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get clean && apt-get update && apt-get -y upgrade
 RUN apt-get -y install \
@@ -18,9 +19,7 @@ RUN apt-get -y install \
 	file \
 	curl \
 	less \
-	nano \
-	netcat-openbsd \
-	patchelf
+	nano 
 RUN useradd -m user && echo "user:password" | chpasswd
 
 # My attempt to get tshark to work in a webVM
@@ -32,13 +31,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
   	libpcap-dev \
 	libssh-dev \
 	libsystemd-dev \
-	libwireshark11
+	libwireshark14
 
 COPY --chown=user:user ./include/tshark /usr/bin/tshark
 RUN chmod 777 /usr/bin/tshark
 COPY --chown=user:user ./include/libwiretap.so.9 /usr/lib/i386-linux-gnu/libwiretap.so.9
 COPY --chown=user:user ./include/libwsutil.so.10 /usr/lib/i386-linux-gnu/libwsutil.so.10
-RUN ln -sf /usr/lib/i386-linux-gnu/libwireshark.so.12 /usr/lib/i386-linux-gnu/libwireshark.so.11
+RUN ln -sf /usr/lib/i386-linux-gnu/libwireshark.so.14 /usr/lib/i386-linux-gnu/libwireshark.so.12
 # refresh linkers to apply rpath changes
 RUN ldconfig
 
